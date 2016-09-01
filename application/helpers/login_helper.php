@@ -2,12 +2,6 @@
 
 abstract class LoginHelper {
     
-    private static $domain = '.socio.com';
-    private static $path = '/';
-    private static $prefix = 'socio_';
-    private static $expire = 86500*30;
-    private static $secure = FALSE;
-
      /**
      * Faz o login
      * @param string $username
@@ -69,7 +63,7 @@ abstract class LoginHelper {
     public static function verificaLogin($username, $password) {
         
         $validUser = $username == "admin";
-        $validPass = strcmp("admin", $password) === 0;
+        $validPass = $password == "admin";
             
         return $validUser && $validPass;
         
@@ -87,8 +81,8 @@ abstract class LoginHelper {
         if(LoginHelper::isLogged()){
             
             #Verifica autenticidade
-            $auth = LoginHelper::verificaLogin($CI->session->username, $CI->session->password);
-
+            $auth = LoginHelper::verificaLogin($CI->session->username, $CI->session->userpassword);
+            
             if($auth)
                 return true;
             

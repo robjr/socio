@@ -12,6 +12,10 @@ class Socios extends MY_Controller  {
         #Carrega biblioteca Socio
         $this->load->model("socio");
     }
+    
+    public function index(){
+        $this->load->view("socios");
+    }
 
     public function adicionar()
     {
@@ -49,9 +53,10 @@ class Socios extends MY_Controller  {
            
             #Persite dados no banco
             $socioMapper = new SocioMapper($socio);
-            $socioMapper->insert();
+            $id = $socioMapper->insert();
             
             $json["sucesso"] = true;
+            $json["id"] = $id;
             
         } 
         catch (Exception $ex) {

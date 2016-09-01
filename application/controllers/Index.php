@@ -9,7 +9,15 @@ class Index extends CI_Controller {
     }
 
     function index() {
-        $this->load->view("homepage", array(""));
+        if(LoginHelper::isLogged()){
+            redirect('socios');
+        }
+        
+        $csrf = array('name' => $this->security->get_csrf_token_name(),
+                      'hash' => $this->security->get_csrf_hash()
+                );
+        
+        $this->load->view("homepage", array("csrf" => $csrf));
     }
     
     function logar() {
@@ -37,8 +45,8 @@ class Index extends CI_Controller {
             if(!LoginHelper::login($username, $password)) {
                 throw new Exception('A combinação de usuário e senha está errada.');
             }
-            
-            $json["redirect"] = "/Socios";
+
+            $json["redirect"] = base_url("socios");
             
         } 
         catch (Exception $ex) {

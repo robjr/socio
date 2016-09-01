@@ -13,6 +13,10 @@ class Empresas extends MY_Controller  {
         $this->load->model("empresa");
     }
 
+    public function index(){
+        $this->load->view("empresas");
+    }
+    
     public function adicionar()
     {
         #Carrega bibliotecas
@@ -43,10 +47,10 @@ class Empresas extends MY_Controller  {
            
             #Persite dados no banco
             $empresaMapper = new EmpresaMapper($empresa);
-            $empresaMapper->insert();
+            $id = $empresaMapper->insert();
             
             $json["sucesso"] = true;
-            
+            $json["id"] = $id;
         } 
         catch (Exception $ex) {
             
