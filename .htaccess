@@ -1,0 +1,11 @@
+RewriteEngine on
+
+# Force NOWWW
+RewriteCond %{HTTP_HOST} ^www\.(.+) [NC]
+RewriteRule ^ http://%1%{REQUEST_URI} [R=302,L]
+
+#Imagens
+RewriteCond $1 !^(index\.php|interface_components|images|robots\.txt)
+
+#Codeigniter URI
+RewriteRule ^(.*)$ index.php/$1 [L]
