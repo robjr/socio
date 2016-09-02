@@ -1,6 +1,10 @@
 ## Sinopse
 Site rápido para administração de dados de sócios e empresas integrantes de um grupo. 
 
+Para testar:
+Login: admin
+Senha: admin
+
 ## Instalação
 
 Copiar a pasta do repositório para a pasta www do seu servidor Apache de modo que 
@@ -17,6 +21,9 @@ E modifique o caminho a seguir, caso necessário, para o diretório onde se enco
 as dlls mencionadas acima.
 
 sqlite3.extension_dir = "C:\caminho\para\sqlite_dlls"
+
+Login da aplicação: admin
+Senha da aplicação: admin
 
 ## License
 
