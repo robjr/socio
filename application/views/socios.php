@@ -220,7 +220,7 @@
 </html>
 
 <script>
-
+    var xhr = null;
     var cpfSearch = "";
     
     $("#cpfSearch").keyup(function (){
@@ -251,9 +251,15 @@
     }
     
     function ler(page) {
-
-        $.ajax({
-            url: '<?=base_url(); ?>socios/ler/' + page + '/' + cpfSearch 
+        
+        //Cancela requests anteriores
+        if(xhr != null){
+           xhr.abort();
+           xhr = null;
+        }
+                
+        xhr = $.ajax({
+            url: '<?=base_url(); ?>socios/ler/' + page + '/' + cpfSearch
         }).done(function (obj) {
             
             if (obj.hasOwnProperty("erro")) {

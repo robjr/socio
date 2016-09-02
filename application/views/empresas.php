@@ -202,7 +202,7 @@
 </html>
 
 <script>
-
+    var xhr = null;
     var cnpjSearch = "";
     
     $("#cnpjSearch").keyup(function (){
@@ -233,8 +233,14 @@
     }
     
     function ler(page) {
-
-        $.ajax({
+        
+        //Cancela requests anteriores
+        if(xhr != null){
+           xhr.abort();
+           xhr = null;
+        }
+                
+        xhr = $.ajax({
             url: '<?=base_url(); ?>empresas/ler/' + page + '/' + cnpjSearch 
         }).done(function (obj) {
             
