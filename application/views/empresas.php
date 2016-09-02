@@ -42,6 +42,8 @@
                <a href="<?=base_url('socios')?>" class="ui fluid button" style="background-color: white;">Sócios</a>
                <br>
                <a href="<?=base_url('empresas')?>" class="ui fluid button" style="background-color: white;">Empresas</a>
+               <br>
+               <a href="<?=base_url('index/logout')?>" class="ui fluid black inverted button">Logout</a>
             </div>
            
             
